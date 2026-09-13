@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dynamic-pricing-contextual-bandits"
+version = "1.0.0"
+description = "Contextual bandits for dynamic pricing from scratch: LinUCB, linear Thompson sampling, regret against a known optimum, and off-policy evaluation with support diagnostics"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Raghav Banuni" }]
+keywords = ["contextual-bandits", "linucb", "thompson-sampling", "off-policy-evaluation", "dynamic-pricing"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# Nothing at runtime: the ridge updates, Sherman-Morrison, Cholesky and the estimators are the content.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+pricing-demo = "pricing.cli:main"
+
+[tool.setuptools]
+packages = ["pricing"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
